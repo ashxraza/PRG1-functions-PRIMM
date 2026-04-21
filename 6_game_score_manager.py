@@ -8,6 +8,10 @@ class ScoreManager:
             return f"Added player: {name}"
         return f"Player {name} already exists"
     
+    def remove_player(self, name):
+        if name 
+    
+    
     def add_score(self, name, score):
         if name in self.players:
             self.players[name].append(score)

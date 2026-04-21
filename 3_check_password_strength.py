@@ -1,6 +1,7 @@
 def check_password_strength(password):
     score = 0
     feedback = []
+    special_characters = "!@#$%^&*"
     
     if len(password) >= 8:
         score += 1
@@ -21,6 +22,11 @@ def check_password_strength(password):
         score += 1
     else:
         feedback.append("Password should contain numbers")
+
+    if any(char in special_characters for char in password):
+        score +=1
+    else: 
+        feedback.append("Needs special characters")
     
     return score, feedback
 
@@ -28,7 +34,7 @@ def check_password_strength(password):
 passwords = ["hello", "Hello123", "PASSWORD", "MyPass123!"]
 for pwd in passwords:
     score, issues = check_password_strength(pwd)
-    print(f"'{pwd}': Score {score}/4")
+    print(f"'{pwd}': Score {score}/5")
     for issue in issues:
         print(f"  - {issue}")
     print()
